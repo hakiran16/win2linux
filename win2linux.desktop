@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Win2Linux
+Comment=Make GNOME feel like Windows — toggles + Windows 10 theme for Plasma
+Exec=win2linux
+Icon=preferences-desktop
+Terminal=false
+Type=Application
+Categories=Settings;DesktopSettings;
+Keywords=windows;gnome;kde;plasma;theme;
+StartupWMClass=win2linux

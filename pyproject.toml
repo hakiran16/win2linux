@@ -1,0 +1,15 @@
+[project]
+name = "win2linux"
+version = "0.2.0"
+description = "GNOME settings helper for Windows migrants — plus Windows 10 theme for KDE Plasma"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+win2linux = "win2linux:main"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
