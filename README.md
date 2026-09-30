@@ -34,7 +34,7 @@ python3 win2linux.py
 
 ### Language
 
-English is the default. Persian (`فارسی`) is also available — select it from the **Windows 10 Theme** row’s dropdown, or set `WIN2LINUX_LANG=fa` as an environment variable. The first launch may pre-seed from the system locale if it already contains `fa`/`fa_IR`; otherwise English is used. The UI mirrors right-to-left when Persian is active (`Gtk.TextDirection.RTL`).
+English is the default. Persian (`فارسی`) is also available — select it from the language dropdown in the header bar, or set `WIN2LINUX_LANG=fa` as an environment variable. The first launch may pre-seed from the system locale if it already contains `fa`/`fa_IR`; otherwise English is used. The UI mirrors right-to-left when Persian is active (`Gtk.TextDirection.RTL`).
 
 Install deps on Ubuntu/Fedora:
 
@@ -45,14 +45,72 @@ sudo apt install python3-gi gir1.2-gtk-4.0 gir1.2-adw-1
 sudo dnf install python3-gobject gtk4 libadwaita
 ```
 
-## Install (desktop entry)
+## Install on Ubuntu / Add to App Menu
+
+Install the system GTK dependencies first:
+
+```bash
+sudo apt update
+sudo apt install python3-gi gir1.2-gtk-4.0 gir1.2-adw-1 desktop-file-utils
+```
+
+Recommended development install from the project folder:
+
+```bash
+python3 -m pip install --user -e .
+mkdir -p ~/.local/share/applications
+cp win2linux.desktop ~/.local/share/applications/
+update-desktop-database ~/.local/share/applications
+```
+
+After that, search for **Win2Linux** in the Ubuntu/GNOME app menu.
+
+Manual install without `pip`:
 
 ```bash
 mkdir -p ~/.local/share/applications ~/.local/bin
 cp win2linux.py ~/.local/bin/win2linux
+chmod +x ~/.local/bin/win2linux
 cp win2linux.desktop ~/.local/share/applications/
 update-desktop-database ~/.local/share/applications
 ```
+
+Make sure `~/.local/bin` is in your `PATH`, then log out/in if the menu does not refresh immediately.
+
+## Publish to GitHub
+
+From this folder:
+
+```bash
+git init
+git branch -M main
+git add win2linux.py win2linux.desktop pyproject.toml README.md LICENSE AGENTS.md
+git commit -m "Initial Win2Linux release"
+git remote add origin https://github.com/YOUR-USERNAME/win2linux.git
+git push -u origin main
+```
+
+If the repository already exists locally, start from `git status`, then commit and push your current changes.
+
+## نصب روی اوبونتو / اضافه کردن به منوی برنامه‌ها
+
+ابتدا وابستگی‌های GTK را نصب کنید:
+
+```bash
+sudo apt update
+sudo apt install python3-gi gir1.2-gtk-4.0 gir1.2-adw-1 desktop-file-utils
+```
+
+روش پیشنهادی از داخل پوشه پروژه:
+
+```bash
+python3 -m pip install --user -e .
+mkdir -p ~/.local/share/applications
+cp win2linux.desktop ~/.local/share/applications/
+update-desktop-database ~/.local/share/applications
+```
+
+بعد از نصب، در منوی برنامه‌های اوبونتو/GNOME عبارت **Win2Linux** را جستجو کنید.
 
 ## Attribution
 
